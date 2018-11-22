@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>methods实例</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+
+<body>
+    <h1>methods实例</h1>
+    <hr>
+    <div id="app">{{message}}
+        <p><button @click="add(5)">add</button></p>
+        <btn @click.native="add(2)"></btn>
+    </div>
+    <button onclick="app.add(3)">add3</button>
+
+
+    <script>
+        var btn = {
+            template: `<p><button>add2</button></p>`
+        };
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 1
+            },
+            methods: {
+                add: function(num) {
+                    return this.message += num
+                }
+            },
+            components: {
+                'btn': btn
+            },
+            watch: {
+                message: function(newVal,oldVal) {
+                    if (newVal > oldVal) {
+                        alert('add')
+                    }else {
+                        alert('down')
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

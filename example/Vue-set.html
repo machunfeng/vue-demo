@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.set全局设置实例</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+
+<body>
+    <h1>Vue.set全局设置实例</h1>
+    <hr>
+    <div id="app">
+        {{count}}
+        <br>
+        <ul>
+            <li v-for="item in arr">{{item}}</li>
+        </ul>
+    </div>
+    <div><button onclick="add()">add</button></div>
+
+    <script>
+        function add(){
+            Vue.set(outdate,'count',3);
+            Vue.set(outdate.arr,1,3);
+        }
+        var outdate = {
+            count: 1,
+            arr: [1,2,3]
+        }
+        var app = new Vue({
+            el: '#app',
+            data: outdate,
+        })
+    </script>
+</body>
+
+</html>

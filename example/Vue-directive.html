@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自定义指令</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+
+<body>
+    <h1>自定义指令</h1>
+    <hr>
+    <div id="app">
+        <div v-mydir="color">{{number}}</div>
+        <button @click="add">add</button><br>
+        <button onclick="unbind()">解绑</button>
+    </div>
+
+    <script>
+        Vue.directive('mydir', {
+            bind: function (el, binding) {
+                console.log('1 : bind');
+                el.style.color = binding.value;
+            },
+            inserted: function (el, binding) {
+                console.log('2 : inserted');
+            },
+            update: function () { //组件更新
+                console.log('3 - update');
+            },
+            componentUpdated: function () { //组件更新完成
+                console.log('4 - componentUpdated');
+            },
+            unbind: function () { //解绑
+                console.log('5 - unbind');
+            }
+        });
+        function unbind() {
+            app.$destroy();
+        }
+        var app = new Vue({
+            el: '#app',
+            data: {
+                number: '1',
+                color: 'red'
+            },
+            methods: {
+                add: function () {
+                    return this.number++
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

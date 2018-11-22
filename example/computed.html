@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HelloWorld实例</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+
+<body>
+    <h1>HelloWorld实例</h1>
+    <hr>
+    <div id="app">
+        {{messageA}}
+        <ul>
+            <li v-for="item in reverseList">{{item}}</li>
+        </ul>
+    </div>
+
+    <script>
+        var list = [4,3,2,1]
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'HelloWorld',
+                list: list
+            },
+            computed: {
+                messageA: function() {
+                    return this.message = 'yes'
+                },
+                reverseList: function() {
+                    return this.list.reverse()
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

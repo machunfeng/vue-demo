@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HelloWorld实例</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+
+<body>
+    <h1>HelloWorld实例</h1>
+    <hr>
+    <div id="app">
+        <machunfeng></machunfeng>
+        <machunfeng2></machunfeng2>
+    </div>
+
+    <script>
+        component = Vue.component('machunfeng', {
+            template: `<h2 style="color:red">我是全局的组件machunfeng</h2>`
+        })
+        var app = new Vue({
+            el: '#app',
+            components: {
+                'machunfeng2': {
+                    template: `<h2 style="color:green">我是局部的组件machunfeng</h2>`
+                } 
+            }
+        })
+    </script>
+</body>
+
+</html>

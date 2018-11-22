@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-on实例</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+
+<body>
+    <h1>v-on实例</h1>
+    <hr>
+    <div id="app">
+        <div>得分：{{message}}</div>
+        <div>
+            <button v-on:click="add">add</button>
+            <button @click="reduce">reduce</button><br>
+            <input type="text" v-model="message2" v-on:keyup.enter="add2">
+        </div>
+    </div>
+
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 0
+            },
+            methods: {
+                add: function () {
+                    return this.message++
+                },
+                reduce: function () {
+                    return this.message--
+                },
+                add2: function () {
+                    this.message += parseInt(this.message2)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

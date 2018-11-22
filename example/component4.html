@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HelloWorld实例</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+
+<body>
+    <h1>HelloWorld实例</h1>
+    <hr>
+    <div id="app">
+        <component :is="componentId"></component>
+        <button @click="changeComponent">change</button>
+    </div>
+
+    <script>
+        var componentA = {
+            template: `<h2 style="color:green">我是组件machunfengA</h2>`
+        }
+        var componentB = {
+            template: `<h2 style="color:red">我是组件machunfengB</h2>`
+        }
+        var componentC = {
+            template: `<h2 style="color:blue">我是组件machunfengC</h2>`
+        }
+        var app = new Vue({
+            el: '#app',
+            data: {
+                componentId: 'componentA'
+            },
+            components: {
+                'componentA': componentA,
+                'componentB': componentB,
+                'componentC': componentC,
+            },
+            methods: {
+                changeComponent: function() {
+                    (this.componentId ==='componentA') ? (this.componentId = 'componentB') : (this.componentId = 'componentC');
+                    (this.componentId ==='componentB') ? (this.componentId = 'componentC') : (this.componentId = 'componentA');
+                } 
+            }
+        })
+    </script>
+</body>
+
+</html>

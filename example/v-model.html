@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-model实例</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+
+<body>
+    <h1>v-model实例</h1>
+    <hr>
+    <div id="app">
+        <h2>文本框</h2>
+        <div>{{message}}</div>
+        <label for="one">v-model</label>
+        <input type="text" id="one" name='text' v-model="message"><br>
+        <label for="two">v-model.lazy</label>
+        <input type="text" id="two" name='text' v-model.lazy="message"><br>
+        <label for="three">v-model.number</label>
+        <input type="text" id="three" name='text' v-model.number="message"><br>
+        <label for="four">v-model.trim</label>
+        <input type="text" id="four" name='text' v-model.trim="message"><br>
+        <hr>
+        <h2>文本域</h2>
+        <textarea cols="30" rows="10" v-model="message"></textarea>
+        <hr>
+        <h2>复选框绑定一个值</h2>
+        <input type="checkbox" id="five" v-model='isTrue' value="123"><label for="five">{{isTrue}}</label><br>
+        你是否选择:{{isTrue}}
+        <hr>
+        <h2>复选框绑定多个值</h2>
+        <input type="checkbox" id="five" v-model='isTrue' value="123"><label for="five">123</label><br>
+        <input type="checkbox" id="six" v-model='isTrue' value="456"><label for="six">456</label><br>
+        <input type="checkbox" id="seven" v-model='isTrue' value="789"><label for="seven">789</label><br>
+        <p>{{isTrue}}</p>
+        <hr>
+        <h2>单选框</h2>
+        <input type="radio" id="eight" value="radio1" v-model="go"><label for="eight">radio1</label>
+        <input type="radio" id="eight" value="radio2" v-model="go"><label for="eight">radio2</label>
+        <input type="radio" id="eight" value="radio3" v-model="go"><label for="eight">radio3</label>
+        <p>你的选择是：{{go}}</p>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'HelloWorld',
+                isTrue: [],
+                go: ''
+            },
+        })
+    </script>
+</body>
+
+</html>
